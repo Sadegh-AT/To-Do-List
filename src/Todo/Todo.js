@@ -1,13 +1,24 @@
 import React, { Component } from "react";
 import "./Todo.css";
 export default class Todo extends Component {
+  constructor(props) {
+    super(props);
+  }
+  enterKeyDownHandler(e) {
+    if (e.key === "Enter") {
+      console.log("Hi");
+    }
+  }
   render() {
     return (
       <div>
         <div className="container">
           <div className="todo-container">
             <div className="todo-input">
-              <input type="text" />
+              <input
+                type="text"
+                onKeyDown={this.enterKeyDownHandler.bind(this)}
+              />
               <button>
                 <svg
                   width="29"
