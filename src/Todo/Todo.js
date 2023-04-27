@@ -3,10 +3,20 @@ import "./Todo.css";
 export default class Todo extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      todoTitle: "",
+    };
+  }
+  todoTitleHandler(e) {
+    this.setState({
+      todoTitle: e.target.value,
+    });
   }
   enterKeyDownHandler(e) {
     if (e.key === "Enter") {
-      console.log("Hi");
+      this.setState({
+        todoTitle: "",
+      });
     }
   }
   render() {
@@ -17,6 +27,8 @@ export default class Todo extends Component {
             <div className="todo-input">
               <input
                 type="text"
+                value={this.state.todoTitle}
+                onChange={this.todoTitleHandler.bind(this)}
                 onKeyDown={this.enterKeyDownHandler.bind(this)}
               />
               <button>
@@ -43,6 +55,13 @@ export default class Todo extends Component {
                   />
                 </svg>
               </button>
+            </div>
+            <div className="todo-sort">
+              <select>
+                <option value="">All</option>
+                <option value="">Completed</option>
+                <option value="">Uncompleted</option>
+              </select>
             </div>
           </div>
         </div>

@@ -46,3 +46,9 @@
 .todo-input button svg {
   scale: 0.9;
 }
+.todo-sort {
+  position: relative;
+}
+.todo-sort select {
+  /* display: none; */
+}
