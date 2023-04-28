@@ -7,6 +7,7 @@ export default class Todo extends Component {
     this.state = {
       items: [],
       todoTitle: "",
+      validate: true,
     };
   }
   todoTitleHandler(e) {
@@ -26,7 +27,12 @@ export default class Todo extends Component {
           return {
             items: [...prev.items, newItem],
             todoTitle: "",
+            validate: true,
           };
+        });
+      } else {
+        this.setState({
+          validate: false,
         });
       }
     }
@@ -69,6 +75,7 @@ export default class Todo extends Component {
                   </svg>
                 </button>
               </div>
+
               <div className="todo-sort">
                 <select>
                   <option value="">All</option>
@@ -77,6 +84,7 @@ export default class Todo extends Component {
                 </select>
               </div>
             </div>
+
             <div className="item-container">
               {this.state.items.map((item) => {
                 return <Item key={item.id} {...item}></Item>;
