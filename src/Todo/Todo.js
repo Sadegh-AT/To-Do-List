@@ -16,16 +16,19 @@ export default class Todo extends Component {
   }
   enterKeyDownHandler(e) {
     if (e.key === "Enter") {
-      let newItem = {
-        id: this.state.items.length + 1,
-        title: this.state.todoTitle,
-      };
-      this.setState((prev) => {
-        return {
-          items: [...prev.items, newItem],
-          todoTitle: "",
+      let str = this.state.todoTitle.trim();
+      if (str !== "") {
+        let newItem = {
+          id: this.state.items.length + 1,
+          title: this.state.todoTitle,
         };
-      });
+        this.setState((prev) => {
+          return {
+            items: [...prev.items, newItem],
+            todoTitle: "",
+          };
+        });
+      }
     }
   }
   render() {
