@@ -4,7 +4,7 @@ export default class Item extends Component {
   render() {
     return (
       <div className="item">
-        <p>sijdaoliwijdoaasdasdawijd</p>
+        <p>{this.props.title}</p>
         <div className="btns">
           <button className="btn">
             <svg

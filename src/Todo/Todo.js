@@ -5,6 +5,7 @@ export default class Todo extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      items: [],
       todoTitle: "",
     };
   }
@@ -15,8 +16,15 @@ export default class Todo extends Component {
   }
   enterKeyDownHandler(e) {
     if (e.key === "Enter") {
-      this.setState({
-        todoTitle: "",
+      let newItem = {
+        id: this.state.items.length + 1,
+        title: this.state.todoTitle,
+      };
+      this.setState((prev) => {
+        return {
+          items: [...prev.items, newItem],
+          todoTitle: "",
+        };
       });
     }
   }
@@ -67,9 +75,9 @@ export default class Todo extends Component {
               </div>
             </div>
             <div className="item-container">
-              <Item></Item>
-              <Item></Item>
-              <Item></Item>
+              {this.state.items.map((item) => {
+                return <Item key={item.id} {...item}></Item>;
+              })}
             </div>
           </div>
         </div>
