@@ -26,7 +26,7 @@
   font-size: 1.2rem;
   background-color: #f8f8f8;
 }
-.todo-input button {
+.btn {
   cursor: pointer;
   position: absolute;
   right: 1rem;

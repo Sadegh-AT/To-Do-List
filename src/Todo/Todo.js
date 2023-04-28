@@ -33,7 +33,7 @@ export default class Todo extends Component {
                   onChange={this.todoTitleHandler.bind(this)}
                   onKeyDown={this.enterKeyDownHandler.bind(this)}
                 />
-                <button>
+                <button className="btn">
                   <svg
                     width="29"
                     height="29"
