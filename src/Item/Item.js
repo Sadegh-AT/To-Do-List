@@ -7,6 +7,9 @@ export default class Item extends Component {
   cmpleted(id) {
     this.props.completedBtn(id);
   }
+  remove(id) {
+    this.props.onRemove(id);
+  }
   render() {
     return (
       <div className={`item ${this.props.completed ? "completed" : ""}`}>
@@ -31,7 +34,10 @@ export default class Item extends Component {
               />
             </svg>
           </button>
-          <button className="btn">
+          <button
+            className="btn"
+            onClick={this.remove.bind(this, this.props.id)}
+          >
             <svg
               width="24"
               height="24"

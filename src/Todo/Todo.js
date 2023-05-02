@@ -49,6 +49,13 @@ export default class Todo extends Component {
       items: newList,
     });
   }
+  removeBtn(id) {
+    let newList = this.state.items.filter((item) => item.id !== id);
+
+    this.setState({
+      items: newList,
+    });
+  }
   render() {
     return (
       <div>
@@ -104,6 +111,7 @@ export default class Todo extends Component {
                     key={item.id}
                     {...item}
                     completedBtn={this.completeBtn.bind(this)}
+                    onRemove={this.removeBtn.bind(this)}
                   ></Item>
                 );
               })}
