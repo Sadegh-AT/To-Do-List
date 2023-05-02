@@ -12,6 +12,11 @@
   font-size: 1.2rem;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.589);
 }
+.item.completed {
+  opacity: 0.4;
+  text-decoration: line-through;
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.281) inset;
+}
 .item > .btns > button:last-child:hover {
   background-color: #ff6f07;
 }
