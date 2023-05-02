@@ -22,6 +22,7 @@ export default class Todo extends Component {
         let newItem = {
           id: this.state.items.length + 1,
           title: this.state.todoTitle,
+          completed: false,
         };
         this.setState((prev) => {
           return {

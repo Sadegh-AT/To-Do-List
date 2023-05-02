@@ -3,7 +3,7 @@ import "./Item.css";
 export default class Item extends Component {
   render() {
     return (
-      <div className="item">
+      <div className={`item ${this.props.completed ? "completed" : ""}`}>
         <p>{this.props.title}</p>
         <div className="btns">
           <button className="btn">
