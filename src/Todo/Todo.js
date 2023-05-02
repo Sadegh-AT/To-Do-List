@@ -38,6 +38,17 @@ export default class Todo extends Component {
       }
     }
   }
+  completeBtn(id) {
+    let newList = [...this.state.items];
+    newList.forEach((item) => {
+      if (item.id === id) {
+        item.completed = !item.completed;
+      }
+    });
+    this.setState({
+      items: newList,
+    });
+  }
   render() {
     return (
       <div>
@@ -88,7 +99,13 @@ export default class Todo extends Component {
 
             <div className="item-container">
               {this.state.items.map((item) => {
-                return <Item key={item.id} {...item}></Item>;
+                return (
+                  <Item
+                    key={item.id}
+                    {...item}
+                    completedBtn={this.completeBtn.bind(this)}
+                  ></Item>
+                );
               })}
             </div>
           </div>

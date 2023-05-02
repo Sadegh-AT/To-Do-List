@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import "./Item.css";
 export default class Item extends Component {
+  constructor(props) {
+    super(props);
+  }
+  cmpleted(id) {
+    this.props.completedBtn(id);
+  }
   render() {
     return (
       <div className={`item ${this.props.completed ? "completed" : ""}`}>
         <p>{this.props.title}</p>
         <div className="btns">
-          <button className="btn">
+          <button
+            className="btn"
+            onClick={this.cmpleted.bind(this, this.props.id)}
+          >
             <svg
               width="24"
               height="24"
