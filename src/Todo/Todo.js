@@ -8,6 +8,7 @@ export default class Todo extends Component {
       items: [],
       todoTitle: "",
       validate: true,
+      status: "all",
     };
   }
   todoTitleHandler(e) {
@@ -56,6 +57,12 @@ export default class Todo extends Component {
       items: newList,
     });
   }
+  statusHandler(event) {
+    console.log(event.target.value);
+    this.setState({
+      status: event.target.value,
+    });
+  }
   render() {
     return (
       <div>
@@ -96,25 +103,53 @@ export default class Todo extends Component {
               </div>
 
               <div className="todo-sort">
-                <select>
-                  <option value="">All</option>
-                  <option value="">Completed</option>
-                  <option value="">Uncompleted</option>
+                <select onChange={this.statusHandler.bind(this)}>
+                  <option value="all">All</option>
+                  <option value="completed">Completed</option>
+                  <option value="uncompleted">Uncompleted</option>
                 </select>
               </div>
             </div>
 
             <div className="item-container">
-              {this.state.items.map((item) => {
-                return (
-                  <Item
-                    key={item.id}
-                    {...item}
-                    completedBtn={this.completeBtn.bind(this)}
-                    onRemove={this.removeBtn.bind(this)}
-                  ></Item>
-                );
-              })}
+              {this.state.status == "all" &&
+                this.state.items.map((item) => {
+                  return (
+                    <Item
+                      key={item.id}
+                      {...item}
+                      completedBtn={this.completeBtn.bind(this)}
+                      onRemove={this.removeBtn.bind(this)}
+                    ></Item>
+                  );
+                })}
+              {this.state.status === "completed" &&
+                this.state.items
+                  .filter((item) => item.completed === true)
+                  .map((item) => {
+                    return (
+                      <Item
+                        key={item.id}
+                        {...item}
+                        completedBtn={this.completeBtn.bind(this)}
+                        onRemove={this.removeBtn.bind(this)}
+                      ></Item>
+                    );
+                  })}
+
+              {this.state.status === "uncompleted" &&
+                this.state.items
+                  .filter((item) => item.completed === false)
+                  .map((item) => {
+                    return (
+                      <Item
+                        key={item.id}
+                        {...item}
+                        completedBtn={this.completeBtn.bind(this)}
+                        onRemove={this.removeBtn.bind(this)}
+                      ></Item>
+                    );
+                  })}
             </div>
           </div>
         </div>
